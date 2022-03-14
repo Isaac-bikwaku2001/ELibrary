@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>@ViewData["Title"]</h1>
+<a class="btn btn-primary" asp-controller="Home" asp-action="Index">Accueil</a>
+<a class="btn btn-primary" asp-controller="Emprunts" asp-action="Emp">Emprunter</a>
+
+@if(ViewBag.cart == null)
+{
+    <div class="alert alert-danger m-2" role="alert">
+        @ViewBag.Message
+    </div>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Titre</th>
+                <th>Langue</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in ViewBag.cart)
+            {
+                <tr>
+                    <td>@item.ISBN</td>
+                    <td>@item.Titre</td>
+                    <td>@item.Langue</td>
+                    <td align="center"><a class="btn btn-danger text-white" asp-controller="Cart" asp-action="Remove" asp-route-id="@item.LivreID"><i class="bi bi-trash"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+

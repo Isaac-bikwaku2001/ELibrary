@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ELibrary.Models.Livre>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Langue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateEdition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Auteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Langue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEdition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Auteur.Nationalite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre.Libelle)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LivreID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LivreID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LivreID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
